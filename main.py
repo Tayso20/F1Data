@@ -14,3 +14,4 @@ for result in race_results:
     test_dic[testA] = testB
 
 print(test_dic)
+print("uwu")

@@ -4,6 +4,7 @@ race_Num= 1
 
 
 allRaces = {}
+driver_names = set()
 
 for race_Num in range(1, 16):
     api_url = f"http://ergast.com/api/f1/2023/{race_Num}/results.json"
@@ -14,6 +15,7 @@ for race_Num in range(1, 16):
 
     for result in race_results:
         driver =result['Driver']['driverId']
+        driver_names.add(driver)
         driver2 = f"Driver:  {driver}"
         pts =result['points']
         singlerace[driver2] = pts
@@ -21,13 +23,13 @@ for race_Num in range(1, 16):
  
 
 
-with open('pleasefuckingwork.json', 'w') as f:
-    json.dump(allRaces, f)
+#with open('pleasefuckingwork.json', 'w') as f:
+    #json.dump(allRaces, f)
 
-
-
-
-                
-
+for race in allRaces:
+    for driver in driver_names:
+        if driver in race.keys()
+        
+print (driver_names)
 
 

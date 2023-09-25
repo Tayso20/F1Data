@@ -1,11 +1,11 @@
 import requests
 import json
-race_Num= 0 
+race_Num= 1 
 
 
 allRaces = {}
 
-for race_Num in range(0, 16):
+for race_Num in range(1, 16):
         api_url = f"http://ergast.com/api/f1/2023/{race_Num}/results.json"
         test = requests.get(api_url)
         data = test.json()
@@ -13,8 +13,9 @@ for race_Num in range(0, 16):
         singlerace = {}
         for result in race_results:
                 driver =result['Driver']['driverId']
+                driver2 = f"Driver:  {driver}"
                 pts =result['points']
-                singlerace[driver] = pts
+                singlerace[driver2] = pts
                 allRaces[f"Race{race_Num}"] = singlerace
  
 
@@ -24,12 +25,8 @@ with open('pleasefuckingwork.json', 'w') as f:
 
 
 
+
                 
 
 
 
-
-#for result in race_results:
-    #testA =result['Driver']['driverId']
-    #testB =result['points']
-    #test_dic[testA] = testB

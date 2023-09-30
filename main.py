@@ -1,5 +1,6 @@
 import requests
 import json
+import matplotlib.pyplot as plt
 
 
 def get_race_results():
@@ -37,15 +38,27 @@ def save_Json(json_file, path):
     with open(path, "w") as f:
         json.dump(json_file, f)
 
+def graph_point(allPoints, driver_names):
+    for driver in driver_names:
+        plt.plot(range(1, 17), allPoints[driver], label=driver)
+
+    plt.xlabel("Race Number")
+    plt.ylabel("Points")
+    plt.title("Formula 1 2023 Race Results")
+    plt.legend()
+    plt.show()
+
 def main():
     allRaces, driver_names = get_race_results()
     allPoints = get_driver_results(driver_names, allRaces)
     save_Json(allRaces, "pleasefuckingwork.json")
     save_Json(allPoints, "holygod.json")
     print(allPoints)
+    graph_point(allPoints, driver_names)
 
 if __name__ == "__main__":
     main()
+    
 
 
 
